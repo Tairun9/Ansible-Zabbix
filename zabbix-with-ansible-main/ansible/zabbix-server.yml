@@ -1,12 +1,8 @@
 ---
 
-- hosts: zabbix_database
-  become: true
-  roles:
-    - role: geerlingguy.mysql
-
 - name: Installing Zabbix
-  hosts: zabbix_server
+  hosts: all
+  connection: ssh
   become: true
   collections:
     - community.zabbix
@@ -19,7 +15,7 @@
 
   post_tasks:
     - name: Create user group
-      connection: local
+      connection: ssh
       become: false
       register: api_create_user_group
       until: api_create_user_group is succeeded
@@ -32,7 +28,7 @@
 
     - name: 'Create an email mediatype with message templates'
       become: false
-      connection: local
+      connection: ssh
       register: api_create_mediatype
       until: api_create_mediatype is succeeded
       community.zabbix.zabbix_mediatype:
@@ -67,7 +63,7 @@
             body: "Host name: {HOST.HOST}\r\nHost IP: {HOST.IP}\r\nAgent port: {HOST.PORT}"
 
     - name: Deploy trigger action
-      connection: local
+      connection: ssh
       become: false
       register: api_create_trigger
       until: api_create_trigger is succeeded
@@ -93,7 +89,7 @@
               - 'ops'
 
     - name: create of zabbix user.
-      connection: local
+      connection: ssh
       become: false
       register: api_create_user
       until: api_create_user is succeeded
