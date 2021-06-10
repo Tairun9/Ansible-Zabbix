@@ -1,6 +1,7 @@
 ---
 
-- hosts: zabbix_database
+- hosts: all
+  connection: ssh
   become: true
   roles:
     - role: geerlingguy.mysql
