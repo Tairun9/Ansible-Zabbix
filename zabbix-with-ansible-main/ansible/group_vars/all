@@ -7,8 +7,8 @@ ansible_user: azgredadmin
 zabbix_link_templates_default:
   - "Linux by Zabbix agent active"
 
-zabbix_host_groups:
-  - Linux servers
+#zabbix_host_groups:
+#  - Linux servers
 
 zabbix_link_templates:
   - "{{ zabbix_link_templates_append if zabbix_link_templates_append is defined else [] }}"
