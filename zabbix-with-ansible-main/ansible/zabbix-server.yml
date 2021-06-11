@@ -15,7 +15,7 @@
 
   post_tasks:
     - name: Create user group
-      connection: ssh
+      connection: local
       become: false
       register: api_create_user_group
       until: api_create_user_group is succeeded
@@ -28,7 +28,7 @@
 
     - name: 'Create an email mediatype with message templates'
       become: false
-      connection: ssh
+      connection: local
       register: api_create_mediatype
       until: api_create_mediatype is succeeded
       community.zabbix.zabbix_mediatype:
@@ -63,7 +63,7 @@
             body: "Host name: {HOST.HOST}\r\nHost IP: {HOST.IP}\r\nAgent port: {HOST.PORT}"
 
     - name: Deploy trigger action
-      connection: ssh
+      connection: local
       become: false
       register: api_create_trigger
       until: api_create_trigger is succeeded
@@ -89,7 +89,7 @@
               - 'ops'
 
     - name: create of zabbix user.
-      connection: ssh
+      connection: local
       become: false
       register: api_create_user
       until: api_create_user is succeeded
@@ -97,9 +97,9 @@
         server_url: "{{ zabbix_url }}"
         login_user: "{{ zabbix_api_user }}"
         login_password: "{{ zabbix_api_pass }}"
-        alias: wdijkerman
-        name: Werner
-        surname: Dijkerman
+        alias: aldar
+        name: aldar
+        surname: aldar
         usrgrps:
           - ops
           - Zabbix administrators
@@ -113,7 +113,7 @@
         after_login_url: ''
         user_medias:
           - mediatype: Email
-            sendto: wdijkerman@example.com
+            sendto: tairun@bk.ru
             period: 1-7,00:00-24:00
             severity:
               not_classified: no
