@@ -8,7 +8,7 @@
     - community.zabbix
 
   roles:
-    #- role: zabbix_server
+    - role: zabbix_server
     - role: geerlingguy.apache
     - role: wdijkerman.php
     - role: zabbix_web
