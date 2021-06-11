@@ -3,7 +3,7 @@
 # If you find in an other file in the group_vars a similar property but with a different value,
 # then for that group of hosts that different value will be used instead of the one found here.
 
-ansible_user: vagrant
+ansible_user: "{{ localuser }}"
 zabbix_link_templates_default:
   - "Linux by Zabbix agent active"
 
