@@ -1,7 +1,6 @@
-
 ---
-
-- hosts: all
+- name: Ensure Initial Configuration on Ubuntu systems
+  hosts: all
   connection: ssh
   become: true
   roles:
