@@ -5,3 +5,11 @@
   become: true
   roles:
     - role: geerlingguy.mysql
+    
+  tasks:
+  
+    - name: display post install message
+      debug:
+        msg:
+          - 'This playbook is for installing MySQL for the Zabbix Database server.'
+          - 'If successful, you should still run installation for Zabbix Frontend.'
