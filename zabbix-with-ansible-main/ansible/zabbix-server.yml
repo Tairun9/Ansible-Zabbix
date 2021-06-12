@@ -1,7 +1,12 @@
 ---
 
+- hosts: "{{ zabbix_database }}"
+  become: true
+  roles:
+    - role: geerlingguy.mysql
+
 - name: Installing Zabbix
-  hosts: all
+  hosts: "{{ zabbix_server }}"
   connection: ssh
   become: true
   collections:
