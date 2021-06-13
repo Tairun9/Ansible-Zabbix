@@ -89,7 +89,7 @@
 
     - name: create a new zabbix user.
       community.zabbix.zabbix_user:
-        server_url: "http://zabbix.example.com/zabbix/"
+        server_url: "http://127.0.0.1"
         login_user: aldar
         login_password: secret
         alias: aldars
