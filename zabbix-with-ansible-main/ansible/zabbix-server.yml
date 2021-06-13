@@ -103,7 +103,7 @@
           - ops
           - Zabbix administrators
         passwd: password
-        lang: en_GB
+#         lang: en_GB
         theme: blue-theme
         autologin: no
         autologout: '0'
