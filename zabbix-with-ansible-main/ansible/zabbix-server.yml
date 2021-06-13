@@ -88,7 +88,7 @@
               - 'ops'
 
     - name: create of zabbix user.
-      connection: ssh
+      connection: local
       become: false
       register: api_create_user
       until: api_create_user is succeeded
@@ -96,9 +96,9 @@
         server_url: "{{ zabbix_url }}"
         login_user: "{{ zabbix_api_user }}"
         login_password: "{{ zabbix_api_pass }}"
-        alias: aldar
-        name: M 
-        surname: Z
+        alias: wdijkerman
+        name: Werner
+        surname: Dijkerman
         usrgrps:
           - ops
           - Zabbix administrators
@@ -112,7 +112,7 @@
         after_login_url: ''
         user_medias:
           - mediatype: Email
-            sendto: b3ring@mail.ru
+            sendto: wdijkerman@example.com
             period: 1-7,00:00-24:00
             severity:
               not_classified: no
