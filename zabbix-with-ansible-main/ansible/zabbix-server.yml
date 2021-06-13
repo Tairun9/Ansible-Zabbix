@@ -96,32 +96,32 @@
         server_url: "{{ zabbix_url }}"
         login_user: "{{ zabbix_api_user }}"
         login_password: "{{ zabbix_api_pass }}"
-        alias: wdijkerman
-        name: Werner
-        surname: Dijkerman
+        alias: aldar
+        name: aldar
+        surname: aldar
         usrgrps:
           - ops
           - Zabbix administrators
         passwd: password
 #         lang: en_GB
-        theme: blue-theme
-        autologin: no
-        autologout: '0'
-        refresh: '30'
-        rows_per_page: '200'
-        after_login_url: ''
-        user_medias:
-          - mediatype: Email
-            sendto: wdijkerman@example.com
-            period: 1-7,00:00-24:00
-            severity:
-              not_classified: no
-              information: yes
-              warning: yes
-              average: yes
-              high: yes
-              disaster: yes
-            active: no
+#         theme: blue-theme
+#         autologin: no
+#         autologout: '0'
+#         refresh: '30'
+#         rows_per_page: '200'
+#         after_login_url: ''
+#         user_medias:
+#           - mediatype: Email
+#             sendto: wdijkerman@example.com
+#             period: 1-7,00:00-24:00
+#             severity:
+#               not_classified: no
+#               information: yes
+#               warning: yes
+#               average: yes
+#               high: yes
+#               disaster: yes
+#             active: no
         type: Zabbix super admin
         state: present
 
