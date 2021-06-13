@@ -90,15 +90,15 @@
     - name: create a new zabbix user.
       community.zabbix.zabbix_user:
         server_url: "{{ zabbix_url }}"
-        login_user: aldar
-        login_password: secret
-        alias: aldars
-        name: user name
-        surname: user surname
+        login_user: "{{ zabbix_api_user }}"
+        login_password: "{{ zabbix_api_pass }}"
+        alias: aldar
+        name: aldar
+        surname: aldar
         usrgrps:
           - ops
           - Zabbix administrators
-        passwd: password
+        passwd: secret
         lang: en_GB
         theme: blue-theme
         autologin: no
