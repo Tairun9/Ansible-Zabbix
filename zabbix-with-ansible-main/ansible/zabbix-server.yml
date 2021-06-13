@@ -1,5 +1,43 @@
 ---
 
+### All the code up to the play for 'Installing Zabbix' is being done to create a postgres user in advance and add him to sudoers group.
+### This is being done because it seems the postgres user is hardcoded as user with 'become' privileges in the zabbix_server role, see below:
+### Check line 33 https://github.com/ansible-collections/community.zabbix/blob/f1f4b9db36554f825c4d4e26cd6101478d28411f/roles/zabbix_server/tasks/postgresql.yml
+### However, the user doesn't seem to be created by the role itself, because this current playbook fails when executed with the error below
+### "Failed to set permissions on the temporary files Ansible needs to create when becoming an unprivileged user (rc: 1, err: chown: invalid user: ‘postgres’\n}).
+
+
+- name: Make sure we have a 'wheel' group
+  hosts: all
+  connection: ssh
+  become: true
+  group:
+    name: wheel
+    state: present
+
+- name: Allow 'wheel' group to have passwordless sudo
+  hosts: all
+  connection: ssh
+  become: true
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%wheel'
+    line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+
+- name: Add sudoers users to wheel group
+  hosts: all
+  connection: ssh
+  become: true
+  user:
+    name=postgres
+    groups=wheel
+    append=yes
+    state=present
+    createhome=yes
+
+
 - name: Installing Zabbix
   hosts: all
   connection: ssh
