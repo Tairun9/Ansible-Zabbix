@@ -87,41 +87,37 @@
             send_to_groups:
               - 'ops'
 
-    - name: create of zabbix user.
-      connection: ssh
-      become: false
-      register: api_create_user
-      until: api_create_user is succeeded
+    - name: create a new zabbix user.
       community.zabbix.zabbix_user:
-        server_url: "{{ zabbix_url }}"
-        login_user: "{{ zabbix_api_user }}"
-        login_password: "{{ zabbix_api_pass }}"
-        alias: aldar
-        name: aldar
-        surname: aldar
+        server_url: "http://zabbix.example.com/zabbix/"
+        login_user: aldar
+        login_password: secret
+        alias: aldars
+        name: user name
+        surname: user surname
         usrgrps:
           - ops
           - Zabbix administrators
         passwd: password
-#         lang: en_GB
-#         theme: blue-theme
-#         autologin: no
-#         autologout: '0'
-#         refresh: '30'
-#         rows_per_page: '200'
-#         after_login_url: ''
-#         user_medias:
-#           - mediatype: Email
-#             sendto: wdijkerman@example.com
-#             period: 1-7,00:00-24:00
-#             severity:
-#               not_classified: no
-#               information: yes
-#               warning: yes
-#               average: yes
-#               high: yes
-#               disaster: yes
-#             active: no
+        lang: en_GB
+        theme: blue-theme
+        autologin: no
+        autologout: '0'
+        refresh: '30'
+        rows_per_page: '200'
+        after_login_url: ''
+        user_medias:
+          - mediatype: Email
+            sendto: example@example.com
+            period: 1-7,00:00-24:00
+            severity:
+              not_classified: no
+              information: yes
+              warning: yes
+              average: yes
+              high: yes
+              disaster: yes
+            active: no
         type: Zabbix super admin
         state: present
 
