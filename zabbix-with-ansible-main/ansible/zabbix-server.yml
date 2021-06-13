@@ -88,7 +88,7 @@
               - 'ops'
 
     - name: create of zabbix user.
-      connection: local
+      connection: ssh
       become: false
       register: api_create_user
       until: api_create_user is succeeded
